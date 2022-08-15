@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Categories } from 'src/app/models/categories';
+import { CategoryService } from 'src/app/services/categories.service';
+import { CategoriesComponent } from '../categories/categories.component';
 
 @Component({
   selector: 'app-navi',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private ct:CategoryService) { }
+  categories:Categories[]=[];
   ngOnInit(): void {
+    this.getct();
+  }
+
+  getct(){
+    this.ct.getProducts()
+    .subscribe((response)=>{
+      this.categories=response
+      
+      
+    });
   }
 
 }
