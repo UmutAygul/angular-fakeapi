@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
-import {HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -10,42 +10,42 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
 
-  
-  products:Product[]=[];
-  constructor(private httpClient:HttpClient,private pr:ProductService, 
-    private activatedRoute:ActivatedRoute) { }
+
+  products: Product[] = [];
+  constructor(private httpClient: HttpClient, private pr: ProductService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
-      if(params["ct"]){
+    this.activatedRoute.params.subscribe(params => {
+      if (params["ct"]) {
         this.getProductsbyCategory(params["ct"])
-        console.log(params,"param")
-      }else{
+        console.log(params, "param")
+      } else {
         this.getProducts()
         console.log("param deiş")
       }
     })
-    
 
-    
+
+
   }
 
-  getProducts(){
+  getProducts() {
     this.pr.getProducts()
-    .subscribe((response)=>{
-      this.products=response
-      // console.log(this.products)
-      
-    });
+      .subscribe((response) => {
+        this.products = response
+        
+
+      });
   }
-  
-  getProductsbyCategory(ct:string){
+
+  getProductsbyCategory(ct: string) {
     this.pr.getProductsbyCategory(ct)
-    .subscribe((response)=>{
-      this.products=response
-      console.log(this.products,"selm")
-      
-    });
+      .subscribe((response) => {
+        this.products = response
+        
+
+      });
   }
 
 }

@@ -10,6 +10,7 @@ const routes: Routes = [
 
   {path:"category/:ct",component:ProductComponent},
 
+  
 ];
 
 @NgModule({

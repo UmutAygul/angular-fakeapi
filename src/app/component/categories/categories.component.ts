@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Directive, OnInit } from '@angular/core';
 import { Categories } from 'src/app/models/categories';
 import { CategoryService } from 'src/app/services/categories.service';
+
+var a: boolean;
 
 @Component({
   selector: 'app-categories',
@@ -10,32 +12,45 @@ import { CategoryService } from 'src/app/services/categories.service';
 })
 export class CategoriesComponent implements OnInit {
 
-  
-  categories:Categories[]=[];
+
+  categories: Categories[] = [];
   currentCategory: Categories;
 
-  constructor(private httpClient:HttpClient,private ct:CategoryService) { }
+  constructor(private httpClient: HttpClient, private ct: CategoryService) { }
 
   ngOnInit(): void {
     this.getct();
+    a=true;
+    
   }
 
-  getct(){
-    this.ct.getProducts().subscribe((response)=>{
-      this.categories=response
-
-      
+  isClicked()
+  {
+    a=true;
+  }
+  getct() {
+    this.ct.getProducts().subscribe((response) => {
+      this.categories = response
     });
   }
-  setCurrentCategory(b:Categories){
-    this.currentCategory=b;
+
+  setCurrentCategory(b: Categories) {
+    this.currentCategory = b;
+    a=false;
   }
-  getCurrentCategory(category:Categories){
-    if(category==this.currentCategory){
+  getCurrentCategory(category: Categories) {
+    if (category == this.currentCategory && a==false) {
       return "list-group-item active"
-    }else{
+      
+    } else {
       return "list-group-item"
     }
   }
-
+  getAllCategory() {
+    if (a) {
+      return "list-group-item active"
+    } else {
+      return "list-group-item "
+    }
+  }
 }

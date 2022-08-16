@@ -1,3 +1,3 @@
-export interface Categories{
-    ct:string;
+export interface Categories {
+    ct: string;
 }

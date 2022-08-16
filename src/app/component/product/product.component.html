@@ -1,27 +1,19 @@
 <div class="container">
-    <div class="row col  ">
-      <h2 class="text-center  text-black">PRODUCTS</h2>
-      <div class="row row-cols-md-3">
-        <div *ngFor="let i of products" >
-          <div class="card w-75 h-75" >
-            <div class="h-100" >
-              <a href="#" >
-                <img  src="{{i.image}}" class="card-img-top w-100 " alt="...">
-              </a>
-            </div>
-          <div class="card-body w-100 mx-1 "  >
-        <a href="#"  > <h5 class="card-title " style=" position: absolute; bottom: 35px;" >{{i.title}}</h5 ></a>
-      <h5 class="card-text "style="position: absolute; bottom: 10px;" >{{i.price}}</h5>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
+  <div class="row col  ">
+    <h2 class="text-center  text-black">products</h2>
+    <div class="row row-cols-md-3">
+      <div *ngFor="let i of products">
+        <div class="card w-75 h-75">
+          <div class="h-100">
+            <a href="#">
+              <img src="{{i.image}}" class="card-img-top w-100 " alt="...">
+            </a>
+          </div>
+          <div class="card-body w-100 mx-1 ">
+            <a href="#">
+              <h5 class="card-title " style=" position: absolute; bottom: 35px;">{{i.title}}</h5>
+            </a>
+            <h5 class="card-text " style="position: absolute; bottom: 10px;">{{i.price}}$</h5>
+          </div>
+        </div>
+      </div>
