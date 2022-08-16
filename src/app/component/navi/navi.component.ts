@@ -10,19 +10,12 @@ import { CategoriesComponent } from '../categories/categories.component';
 })
 export class NaviComponent implements OnInit {
 
-  constructor(private ct:CategoryService) { }
-  categories:Categories[]=[];
+  constructor() { }
+
   ngOnInit(): void {
-    this.getct();
+    
   }
 
-  getct(){
-    this.ct.getProducts()
-    .subscribe((response)=>{
-      this.categories=response
-      
-      
-    });
-  }
+
 
 }

@@ -1,4 +1,11 @@
 
-
-
+  <ul class="list-group ">
+    <li (click)="setCurrentCategory(i)"  
+    routerLink="category/{{i}}" 
+    *ngFor="let i of categories"
+    [class]="getCurrentCategory(i)" >
+  <h4>{{i}}</h4>
+</li>
+  </ul>
+ 
 

@@ -11,20 +11,31 @@ import { CategoryService } from 'src/app/services/categories.service';
 export class CategoriesComponent implements OnInit {
 
   
-  // categories:Categories[]=[];
+  categories:Categories[]=[];
+  currentCategory: Categories;
+
   constructor(private httpClient:HttpClient,private ct:CategoryService) { }
 
   ngOnInit(): void {
-    // this.getct();
+    this.getct();
   }
 
-  // getct(){
-  //   this.ct.getProducts()
-  //   .subscribe((response)=>{
-  //     this.categories=response
-  //     console.log("aasdg",this.categories)
+  getct(){
+    this.ct.getProducts().subscribe((response)=>{
+      this.categories=response
+
       
-  //   });
-  // }
+    });
+  }
+  setCurrentCategory(b:Categories){
+    this.currentCategory=b;
+  }
+  getCurrentCategory(category:Categories){
+    if(category==this.currentCategory){
+      return "list-group-item active"
+    }else{
+      return "list-group-item"
+    }
+  }
 
 }
